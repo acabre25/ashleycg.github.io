@@ -199,3 +199,15 @@ function reviewInput() {
 function removeReview() {
     document.getElementById("showInput").innerHTML = "";
 }
+
+loadStates("states.txt");
+
+async function loadSates(file){
+    try{
+        let response= await fetch(file);
+        let data = await response.text();
+        document.getElementById("stateSelect").innerHTML += data;
+    } catch (err){
+        console.log("Error loading states:", err);
+    }
+}
